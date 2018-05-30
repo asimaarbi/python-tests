@@ -1,25 +1,18 @@
-"""
-memberdetail = {"Omer" :{"Age" : "25", "Place" : "Cant","occupation" : "Bataien"},
-                 "Shahid" :{"Age" : "26", "Place" : "Cant","occupation" : "Bataien"},
-                  "Bilal" :{"Age" : "30", "Place" : "Cant","occupation" : "Bataien"},
-                }
-a = str(input("Member name :"))
-if a in memberdetail:
-    print("Member Already Existed")
-"""
 
 #record = int(input("Enter the members to add :"))
 
 memb_data={}
 
-for i in range(0,1):
+
+for i in range(2):
 
     a = input("Member name :")
     if a in memb_data:
         print("Member Already Existed")
+
     else:
         Name = a
-        Age = input("Enter the {} age :".format(Name,))
+        Age = input("Enter the {} age :".split().format(Name))
         Grade = input("Enter the {} grade :".format(Name))
         Nam_key =  Name[0]
         Age_value = Age[0]
