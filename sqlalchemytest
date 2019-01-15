@@ -1,0 +1,40 @@
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship
+import sqlalchemy
+
+Base = declarative_base()
+
+print("Test " + sqlalchemy.version)
+
+
+class Product(Base):
+    tablename = "product"
+
+    qr_code = Column("id", Integer, primary_key=True)
+    product_name = Column("product_name", String(225))
+    product_price = Column("product_price", Integer)
+    product_qnt = Column("product_qnt", Integer)
+
+
+engine = create_engine('sqlite:///main.db', echo=True)
+Base.metadata.create_all(bind=engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# def add_product():
+#     product = Product()
+#     product.qr_code = 123456
+#     product.product_name = "Mobile"
+#     product.product_price = 30000
+#     product.product_qnt = 12
+#     session.add(product)
+#     session.commit()
+#
+#
+# add_product()
+
+products = session.query(Product).all()
+for product in products:
+    print("name of the product is {}".format(product.product_name))
